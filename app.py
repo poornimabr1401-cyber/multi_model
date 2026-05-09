@@ -5,9 +5,6 @@ import pytesseract
 import json
 from datetime import datetime
 
-# -----------------------------
-# PAGE CONFIG
-# -----------------------------
 st.set_page_config(
     page_title="Multi-Modal Translator Studio",
     layout="wide"
@@ -17,9 +14,7 @@ st.title("🌍 Multi-Modal Translator Studio")
 
 translator = Translator()
 
-# -----------------------------
-# LANGUAGE OPTIONS
-# -----------------------------
+
 languages = {
     "English": "en",
     "Hindi": "hi",
@@ -29,9 +24,7 @@ languages = {
     "German": "de"
 }
 
-# -----------------------------
-# SIDEBAR MENU
-# -----------------------------
+
 menu = st.sidebar.selectbox(
     "Select Mode",
     [
@@ -41,9 +34,7 @@ menu = st.sidebar.selectbox(
     ]
 )
 
-# -----------------------------
-# SAVE HISTORY FUNCTION
-# -----------------------------
+
 def save_history(original, translated, lang):
 
     data = {
@@ -64,9 +55,7 @@ def save_history(original, translated, lang):
     with open("history.json", "w") as f:
         json.dump(history, f, indent=4)
 
-# -----------------------------
-# TEXT TRANSLATOR
-# -----------------------------
+
 if menu == "Text Translator":
 
     st.header("📝 Text Translator")
@@ -103,9 +92,7 @@ if menu == "Text Translator":
         else:
             st.warning("Please enter some text")
 
-# -----------------------------
-# IMAGE TRANSLATOR
-# -----------------------------
+
 elif menu == "Image Translator":
 
     st.header("🖼️ Image Translator")
@@ -149,9 +136,7 @@ elif menu == "Image Translator":
                 file_name="image_translation.txt"
             )
 
-# -----------------------------
-# HISTORY
-# -----------------------------
+
 elif menu == "History":
 
     st.header("📜 Translation History")
